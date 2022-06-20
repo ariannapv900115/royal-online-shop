@@ -1,0 +1,22 @@
+<form class="form-group" [formGroup]="amountForm">
+  <button type="button" class="btn btn-minus" (click)="minus()">
+        <span class="icon">
+          <i class="fas fa-minus"></i>
+        </span>
+    </button>
+    <label class="input rounded">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="amount"
+        value="{{amount}}"
+        readonly
+      />
+    </label>
+    <button type="button" class="btn btn-add" (click)="add()">
+        <span class="icon">
+          <i class="fas fa-plus"></i>
+        </span>
+    </button>
+</form>
+

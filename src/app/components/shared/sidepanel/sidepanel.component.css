@@ -1,0 +1,16 @@
+.sidepanel {
+  width: 410px;
+}
+.title {
+  color: #ffffff;
+}
+
+
+.is-black:hover {
+  color: grey;
+}
+
+.is-black {
+  float: right;
+  height: 76px;
+}

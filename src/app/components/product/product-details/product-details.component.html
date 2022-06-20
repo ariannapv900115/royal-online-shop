@@ -1,0 +1,15 @@
+<div class=" shadow rounded list-group-item list-group-item-action">
+    <img
+      src="{{product.src}}"
+      class="img-fluid img-responsive rounded img-thumbnail"
+    />
+  <div class="card-body">
+        <div class="btn-group">
+          <a class="fw-light text-decoration-underline" data-bs-toggle="offcanvas" href="#offcanvasRight">Details</a>
+          <app-add-product
+            [product]="product"
+            (amountOfProductToCart)="addProductToCart($event)"
+          ></app-add-product>
+          </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.style-background-img{
+  min-height: 800px;
+  width:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://forever.travel-assets.com/flex/flexmanager/images/2021/06/25/TVLY_SeizeYourSomeday_lpheroB_1680x945_20210623.jpg?impolicy=fcrop&w=900&h=506&q=mediumHigh");
+  text-align: match-parent;
+  color: #181212;
+}
+
+

@@ -1,0 +1,25 @@
+.btn-add {
+  position: absolute !important;
+  left: 320px;
+  top: 0px;
+  border: 1px solid #c4ccd4;
+  width: 2.5em;
+}
+.btn-minus {
+  position: absolute !important;
+  right: 80px;
+  top: 0px;
+  border: 1px solid #c4ccd4;
+  width: 2.5em;
+}
+.input {
+  position: absolute !important;
+  width: 2.8em;
+  top: 0px;
+  right: 22px;
+  margin-right: 0.5em;
+}
+.position-button {
+  position: relative ;
+  top: 100px;
+}
