@@ -12,6 +12,7 @@ import {ProductDetailsComponent} from "./components/product/product-details/prod
 import {ShoppingCartComponent} from "./components/cart/shopping-cart/shopping-cart.component";
 import {HeaderComponent} from "./components/shared/header/header.component";
 import {HeaderCartIconDataComponent} from "./components/shared/header-carticon-data/header-cart-icon-data.component";
+import { DataService } from './service/data-service';
 
 
 const appRoutes: Routes = [
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     PackageCartModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

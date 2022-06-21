@@ -10,8 +10,8 @@ import {ProductDetailsComponent} from "../components/product/product-details/pro
 import {SeeDetailsComponent} from "../components/product/see-details/see-details.component";
 import {ShoppingCartComponent} from "../components/cart/shopping-cart/shopping-cart.component";
 import {CartListComponent} from "../components/cart/cart-list/cart-list.component";
-import {AddProductComponent} from "../components/product/add-product/add-product.component";
 import {HomePageComponent} from "../components/shared/home-page/home-page.component";
+import {DataService} from "./data-service";
 
 @NgModule({
   imports: [
@@ -21,7 +21,6 @@ import {HomePageComponent} from "../components/shared/home-page/home-page.compon
   ],
   declarations: [
     ProductListComponent,
-    AddProductComponent,
     AddMinusPriceComponent,
     SidepanelComponent,
     PackagePriceComponent,
@@ -33,14 +32,14 @@ import {HomePageComponent} from "../components/shared/home-page/home-page.compon
   ],
   exports: [
     ProductListComponent,
-    AddProductComponent,
     AddMinusPriceComponent,
     SidepanelComponent,
     PackagePriceComponent,
     CartListComponent,
   ],
   providers: [
-    ProductService
+    ProductService,
+    DataService
   ]
 })
 export class PackageCartModule { }

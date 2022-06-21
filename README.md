@@ -1,4 +1,13 @@
 # ShoppingCart
+UI built in Angular have the below functionalities:
+
+  `1.See list of products.`
+
+   `2.Add to Cart.`
+
+  `  3.Remove from Cart.`
+
+  `4.See checkout Screen.`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 

@@ -12,24 +12,13 @@ export class PackagePriceComponent implements OnInit  {
   @Output() formGroupEventEmitter : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() amountProductSelected : EventEmitter<number> = new EventEmitter<number>();
   packagePrice : number = 0;
- // public simpleObservable$: Observable<number> = new Observable<number>();
-  priceForm :FormGroup;
   amountForm: FormGroup;
 
   constructor(public fb: FormBuilder) {
-    this.priceForm = this.fb.group({price:''});
     this.amountForm = this.fb.group({});
   }
 
   ngOnInit(): void {
-    /* this.simpleObservable$ = new Observable((observer) => {
-      // observable execution
-      observer.next(9);
-      observer.complete();
-    });
-    this.simpleObservable$.subscribe(val => console.log(val));*/
-
-    this.priceForm.setValue({price:this.product.price});
     this.packagePrice = this.product.price;
     this.setAmount();
   }
@@ -41,7 +30,6 @@ export class PackagePriceComponent implements OnInit  {
     this.setAmount();
     if(this.amountUnits > 0){
       this.packagePrice = this.amountUnits * this.product.price;
-      this.priceForm.controls['price'].setValue(this.packagePrice);
       this.amountProductSelected.emit(this.amountUnits);
     }
   }
@@ -49,4 +37,5 @@ export class PackagePriceComponent implements OnInit  {
     let temp = this.amountForm.get('amount');
     this.amountUnits =  temp != undefined && temp != null ? temp.value : 1;
   }
+
 }

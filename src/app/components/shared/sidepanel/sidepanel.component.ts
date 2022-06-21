@@ -1,4 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Observable, Subscription} from "rxjs";
+import { Product } from 'src/app/models/product';
+import {DataService} from "../../../service/data-service";
+import {ProductService} from "../../../service/product.service";
 
 @Component({
   selector: 'app-sidepanel',
@@ -6,20 +10,26 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./sidepanel.component.css']
 })
 export class SidepanelComponent implements OnInit {
-  @Input() product: any;
+
   @Output() amountPerProductSelected: EventEmitter<number> = new EventEmitter<number>();
-  @Output() close: EventEmitter<boolean> = new EventEmitter();
-  closed: boolean = false;
+  product: any;
+  closed: boolean;
+  modelSubscription: Subscription;
   amountSelected: number = 0;
-  constructor() {}
+
+  constructor(public packageCartService: ProductService, private dataService: DataService) {
+    this.closed =  this.dataService.getClose();
+    this.modelSubscription = new Subscription();
+  }
 
   ngOnInit(): void {
+    this.packageCartService.getProductSelected().subscribe(prod => {
+       this.product = prod;
+    });
   }
 
   closeDetail(): void {
-    this.closed = true;
-      this.close.emit(true);
-
+    this.dataService.changeCloseDetails();
   }
 
   amountProductSelected(amountSelected: number) {

@@ -1,17 +1,8 @@
 <div class="card-body">
-  <form class="form-group" [formGroup]="priceForm">
     <div class="form-group">
        <h6>Cost per Quantity</h6>
         <div class="input-group">
-          <span class="input-group-text">$</span>
-            <input
-            class="card-text"
-            name="price"
-            formControlName="price"
-            type="text"
-            readonly
-            placeholder="{{ packagePrice }}"
-           />
+          <span class="input-group-text">${{ packagePrice }}</span>
           <div class="container-fluid">
             <app-add-minus-price
               [packageAvailable]="product.amount"
@@ -20,6 +11,5 @@
           </div>
       </div>
    </div>
-</form>
 </div>
 

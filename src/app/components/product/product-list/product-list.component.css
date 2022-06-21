@@ -1,11 +1,14 @@
 .position {
-  position: absolute !important;
+  position: absolute;
   top: 150px;
-  left: 150px;
-  right: 50px;
-  align-items: center;
+  left: 250px;
+  right: 100px;
+  align-items: normal;
   justify-content: center;
   box-shadow: 0 1px rgba(255, 255, 255, 0.25);
+  display:grid;
+  grid-template-columns: 2fr 2fr;
+
 }
 .style-background-img{
   min-height: 800px;

@@ -10,8 +10,10 @@ export class ProductService {
   product: Product[]=[];
   productMock: Product[];
   package: PackageCart[]=[];
+  selectedProductIndex: number = 0;
   product$: Subject<Product[]> = new Subject<Product[]>();
   productInCart$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
+  selectedProduct$: Subject<Product> = new Subject<Product>();
 
   constructor() {
     this.productMock = [
@@ -20,6 +22,22 @@ export class ProductService {
         src: 'https://mdbootstrap.com/img/new/standard/city/043.webp',
         title: 'Package tour # 1',
         price: 400 ,
+        description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
+        amount: 6
+      },
+      {
+        id: 2,
+        src: 'https://mdbootstrap.com/img/new/standard/city/046.webp',
+        title: 'Package tour # 2',
+        price: 350 ,
+        description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
+        amount: 10
+      },
+      {
+        id: 3,
+        src: 'https://mdbootstrap.com/img/new/standard/city/039.webp',
+        title: 'Package tour # 3',
+        price: 1000 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 6
       },
@@ -48,26 +66,38 @@ export class ProductService {
         amount: 4
       }];
   }
+
   getProductList(): Observable<Product[]> {
-    this.addProduct();
     return this.product$.asObservable();
   }
-  addProduct(): void {
+
+  addProduct(): Product[] {
     this.productMock.forEach(productMock => {
       this.product.push(productMock);
     });
     this.product$.next(this.product);
+    return this.product;
   }
+
   getProductInCart(): Observable<PackageCart[]> {
     return this.productInCart$.asObservable();
   }
+
   addProductToCart(product: Product, amountSelected: number): void {
-    // @ts-ignore
-    let pack : PackageCart = { product: '',amountSelected:0}
+
+    let pack : PackageCart = {
+      product : {
+        id:-1,
+        price:0,
+        title:'',
+        src:'',
+        description:'',
+        amount:0
+      },
+      amountSelected:0
+    }
       if(!!this.package && this.package.length > 0){
-        // @ts-ignore
-        this.pack = this.package.map(p => {
-          // @ts-ignore
+       this.package.map(p => {
           if(p.product.id === product.id)
             p.amountSelected = amountSelected;
       });}
@@ -78,6 +108,7 @@ export class ProductService {
       }
     this.productInCart$.next(this.package);
   }
+
   removeProductFromCart(productId: number): void {
     if(!!this.package && this.package.length > 0){
       // @ts-ignore
@@ -86,5 +117,13 @@ export class ProductService {
         this.productInCart$.next(this.package.slice(indexPack,1));
       }
     }
+  }
+
+  getProductSelected(): Observable<Product> {
+    return this.selectedProduct$.asObservable();
+  }
+  sendProductSelected(product: Product, index: number): void {
+    this.selectedProductIndex = index;
+    this.selectedProduct$.next(product);
   }
 }
