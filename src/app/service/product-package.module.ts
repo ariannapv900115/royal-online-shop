@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductService } from './product.service';
 import {ProductListComponent} from "../components/product/product-list/product-list.component";
-import {CartDataComponent} from "../components/cart/cart-data/cart-data.component";
 import {PackagePriceComponent} from "../components/cart/package-price/package-price.component";
 import {AddMinusPriceComponent} from "../components/shared/add-minus-price/add-minus-price.component";
 import {SidepanelComponent} from "../components/shared/sidepanel/sidepanel.component";

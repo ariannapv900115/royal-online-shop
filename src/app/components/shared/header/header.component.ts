@@ -1,5 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../service/product.service";
+import {Subscription} from "rxjs";
+import {PackageCart} from "../../../models/packageCart";
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,17 @@ import {ProductService} from "../../../service/product.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  haveProduct: boolean = false;
+  modelSubscription: Subscription;
+  constructor(public productService: ProductService) {
+    this.modelSubscription = new Subscription();
   }
 
   ngOnInit(): void {
+    this.modelSubscription = this.productService.getProductInCart()
+      .subscribe((model: PackageCart[]) => {
+        this.haveProduct = model.length > 0
+      });
   }
 
 }

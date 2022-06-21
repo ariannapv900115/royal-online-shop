@@ -4,7 +4,7 @@
 .btn-add {
   position: absolute !important;;
   right: 5px;
-  top: 0px;
+  top: 0;
   border: 1px solid #c4ccd4;
   width: 3.0em;
 }

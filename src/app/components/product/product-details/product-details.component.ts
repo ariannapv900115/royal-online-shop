@@ -1,6 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from "../../../models/product";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../../../service/product.service";
 
 @Component({

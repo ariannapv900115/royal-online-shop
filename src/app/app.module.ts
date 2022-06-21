@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 import { AppComponent } from './app.component';
@@ -11,8 +11,7 @@ import {ProductListComponent} from "./components/product/product-list/product-li
 import {ProductDetailsComponent} from "./components/product/product-details/product-details.component";
 import {ShoppingCartComponent} from "./components/cart/shopping-cart/shopping-cart.component";
 import {HeaderComponent} from "./components/shared/header/header.component";
-import {CartDataComponent} from "./components/cart/cart-data/cart-data.component";
-import {ProductService} from "./service/product.service";
+import {HeaderCartIconDataComponent} from "./components/shared/header-carticon-data/header-cart-icon-data.component";
 
 
 const appRoutes: Routes = [
@@ -39,15 +38,16 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+  exports: [ RouterModule ],
   declarations: [
     AppComponent,
     HeaderComponent,
-    CartDataComponent,
+    HeaderCartIconDataComponent,
 
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    [ RouterModule.forRoot(appRoutes) ],
     ReactiveFormsModule,
     PackageCartModule
   ],

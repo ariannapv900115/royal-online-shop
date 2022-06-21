@@ -17,7 +17,7 @@ export class CartListComponent implements OnInit {
     this.totalPrice = this.packageCart.product.price * this.packageCart.amountSelected;
   }
 
-  amountProductSelected($event: number) {
+  amountProductSelected($event: any) {
 
   }
 

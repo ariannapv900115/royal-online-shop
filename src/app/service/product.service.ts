@@ -7,13 +7,14 @@ import {PackageCart} from "../models/packageCart";
 @Injectable()
 export class ProductService {
 
-  product: Product[];
+  product: Product[]=[];
+  productMock: Product[];
   package: PackageCart[]=[];
   product$: Subject<Product[]> = new Subject<Product[]>();
   productInCart$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
 
   constructor() {
-    this.product = [
+    this.productMock = [
       {
         id: 1,
         src: 'https://mdbootstrap.com/img/new/standard/city/043.webp',
@@ -48,19 +49,21 @@ export class ProductService {
       }];
   }
   getProductList(): Observable<Product[]> {
+    this.addProduct();
     return this.product$.asObservable();
   }
-  addProduct(product: Product) {
-    this.product.push(product);
+  addProduct(): void {
+    this.productMock.forEach(productMock => {
+      this.product.push(productMock);
+    });
     this.product$.next(this.product);
   }
-
   getProductInCart(): Observable<PackageCart[]> {
     return this.productInCart$.asObservable();
   }
   addProductToCart(product: Product, amountSelected: number): void {
     // @ts-ignore
-    const pack : PackageCart = { product: '',amountSelected:0}
+    let pack : PackageCart = { product: '',amountSelected:0}
       if(!!this.package && this.package.length > 0){
         // @ts-ignore
         this.pack = this.package.map(p => {
@@ -75,16 +78,13 @@ export class ProductService {
       }
     this.productInCart$.next(this.package);
   }
-
-  removeProductFromCart(productId: number): Observable<PackageCart[]> {
+  removeProductFromCart(productId: number): void {
     if(!!this.package && this.package.length > 0){
       // @ts-ignore
       let indexPack = this.package.findIndex(p => p.product.id === productId);
       if(indexPack > -1){
         this.productInCart$.next(this.package.slice(indexPack,1));
       }
-
     }
-    return this.productInCart$.asObservable();
   }
 }

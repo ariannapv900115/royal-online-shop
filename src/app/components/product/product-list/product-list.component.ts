@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs';
-import { Product} from "../../../models/product";
+import {Observable, Subscription} from 'rxjs';
 import { ProductService } from 'src/app/service/product.service';
+import { Product} from "../../../models/product";
 
 @Component({
   selector: 'app-product-list',
@@ -12,14 +12,14 @@ export class ProductListComponent implements OnInit {
   productList: Product[] = [];
   // @ts-ignore
   modelSubscription: Subscription;
-  constructor(public packageCartService: ProductService) {}
+  constructor(public productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productList = this.packageCartService.product;
-    /*this.modelSubscription = this.packageCartService.product$.asObservable()
+    this.productList = this.productService.product;
+      this.modelSubscription = this.productService.getProductList()
       .subscribe((products: Product[]) => {
         this.productList = products;
-      });*/
+        console.log(this.productList)
+      });
   }
-
 }

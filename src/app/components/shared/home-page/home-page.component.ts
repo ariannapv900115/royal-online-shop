@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductService} from "../../../service/product.service";
 
 
 @Component({
@@ -9,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   date:  any;
 
-  constructor() { }
+  constructor(public productService: ProductService) { }
 
   ngOnInit(): void {
+
   }
 
 }

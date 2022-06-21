@@ -14,8 +14,20 @@
 
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-          <li><a routerLink="product">Shopping List</a></li>
-          </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Product
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="product">Shopping List</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/">Add Product</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" active="!haveProduct" routerLink="shopping_cart">Cart</a>
+          </li>
+        </ul>
         </div>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

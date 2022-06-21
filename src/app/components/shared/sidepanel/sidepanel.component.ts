@@ -1,6 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { Product } from 'src/app/models/product';
-import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-sidepanel',
@@ -13,7 +11,7 @@ export class SidepanelComponent implements OnInit {
   @Output() close: EventEmitter<boolean> = new EventEmitter();
   closed: boolean = false;
   amountSelected: number = 0;
-  constructor(public packageCartService: ProductService) {}
+  constructor() {}
 
   ngOnInit(): void {
   }

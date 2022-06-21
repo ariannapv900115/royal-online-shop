@@ -5,10 +5,10 @@ import {PackageCart} from "../../../models/packageCart";
 
 @Component({
   selector: 'app-cart-data',
-  templateUrl: './cart-data.component.html',
-  styleUrls: ['./cart-data.component.css']
+  templateUrl: './header-cart-icon-data.component.html',
+  styleUrls: ['./header-cart-icon-data.component.css']
 })
-export class CartDataComponent implements OnInit {
+export class HeaderCartIconDataComponent implements OnInit {
   amount: number;
   // @ts-ignore
   modelSubscription: Subscription;
@@ -18,7 +18,7 @@ export class CartDataComponent implements OnInit {
 
   ngOnInit() {
 
-    this.modelSubscription = this.packageCartService.productInCart$
+    this.modelSubscription = this.packageCartService.getProductInCart()
       .subscribe((model: PackageCart[]) => {
         this.amount = 0;
         model.forEach(pk => {
