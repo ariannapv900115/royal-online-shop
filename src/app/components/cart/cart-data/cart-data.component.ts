@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {ProductService} from "../../../service/product.service";
+import {PackageCart} from "../../../models/packageCart";
 
 @Component({
   selector: 'app-cart-data',
@@ -7,16 +9,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cart-data.component.css']
 })
 export class CartDataComponent implements OnInit {
-  @Input() amount: any;
-
-  constructor() {
+  amount: number;
+  // @ts-ignore
+  modelSubscription: Subscription;
+  constructor(public packageCartService: ProductService) {
+   this.amount = 0;
   }
 
   ngOnInit() {
-
-  }
-
-  openCartList() {
-
+    this.amount = 0;
+    this.modelSubscription = this.packageCartService.productInCart$
+      .subscribe((model: PackageCart[]) => {
+        model.forEach(pk => {
+          this.amount += pk.amountSelected;
+        });
+      });
   }
 }

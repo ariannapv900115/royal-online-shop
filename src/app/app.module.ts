@@ -12,6 +12,7 @@ import {ProductDetailsComponent} from "./components/product/product-details/prod
 import {ShoppingCartComponent} from "./components/cart/shopping-cart/shopping-cart.component";
 import {HeaderComponent} from "./components/shared/header/header.component";
 import {CartDataComponent} from "./components/cart/cart-data/cart-data.component";
+import {ProductService} from "./service/product.service";
 
 
 const appRoutes: Routes = [
