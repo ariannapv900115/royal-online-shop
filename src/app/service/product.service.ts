@@ -8,7 +8,7 @@ import {PackageCart} from "../models/packageCart";
 export class ProductService {
 
   product: Product[];
-  package!: PackageCart[];
+  package: PackageCart[]=[];
   product$: Subject<Product[]> = new Subject<Product[]>();
   productInCart$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
 
@@ -58,14 +58,33 @@ export class ProductService {
   getProductInCart(): Observable<PackageCart[]> {
     return this.productInCart$.asObservable();
   }
-  addProductToCart(product: Product, amountSelected: number) {
-    const pack : PackageCart = {}
-    !!this.package
-      // @ts-ignore
-      ? this.package.find(p => p.id === product.id).amountSelected = amountSelected
-      : pack.product = product,
-        pack.amountSelected = amountSelected
-       this.package.push(pack)
+  addProductToCart(product: Product, amountSelected: number): void {
+    // @ts-ignore
+    const pack : PackageCart = { product: '',amountSelected:0}
+      if(!!this.package && this.package.length > 0){
+        // @ts-ignore
+        this.pack = this.package.map(p => {
+          // @ts-ignore
+          if(p.product.id === product.id)
+            p.amountSelected = amountSelected;
+      });}
+      else {
+        pack.product = product;
+        pack.amountSelected = amountSelected;
+        this.package.push(pack)
+      }
     this.productInCart$.next(this.package);
+  }
+
+  removeProductFromCart(productId: number): Observable<PackageCart[]> {
+    if(!!this.package && this.package.length > 0){
+      // @ts-ignore
+      let indexPack = this.package.findIndex(p => p.product.id === productId);
+      if(indexPack > -1){
+        this.productInCart$.next(this.package.slice(indexPack,1));
+      }
+
+    }
+    return this.productInCart$.asObservable();
   }
 }

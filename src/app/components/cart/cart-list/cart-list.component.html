@@ -1,29 +1,51 @@
-<table class="table table-hover table-bordered">
-  <thead>
+<!--<table class="table table-hover table-bordered">
+  <thead class="table-responsive">
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">Primero</th>
-    <th scope="col">Último</th>
-    <th scope="col">Handle</th>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price/unit</th>
+    <th scope="col">Amount Selected</th>
+    <th scope="col">Amount Available</th>
+    <th scope="col">Final Import</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td colspan="2">Larry the Bird</td>
-    <td>@twitter</td>
+    <th scope="row">{{packageCart.product.src}}</th>
+    <th scope="row">{{packageCart.product.title}}</th>
+    <th scope="row">{{packageCart.product.price}}</th>
+    <th scope="row">{{packageCart.amountSelected}}</th>
+    <th scope="row">{{packageCart.product.amount}}</th>
+    <th scope="row">{{totalPrice}}</th>
   </tr>
   </tbody>
-</table>
+</table>-->
+<div class="shadow rounded list-group-item list-group-item-action">
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <img
+      src="{{packageCart.product.src}}"
+      class="img-fluid img-responsive rounded img-thumbnail"
+    />
+    <div class="ms-2 me-auto">
+      <app-see-details
+        [title]="packageCart.product.title"
+        [description]="packageCart.product.description"
+        [amount]="packageCart.product.amount"
+      ></app-see-details>
+    </div>
+    <span class="badge bg-primary rounded-pill">{{packageCart.amountSelected}}</span>
+    <div class="btn-group">
+      <a class="fw-light text-decoration-underline" (click)="showEdit()">Edit</a>
+      <a class="fw-light text-decoration-underline" (click)="removeFromCartList()">Delete</a>
+      <div class="btn-group" *ngIf="showEditAmount">
+        <app-package-price
+          [product]="packageCart.product"
+          (amountProductSelected)="amountProductSelected($event)"
+        ></app-package-price>
+      </div>
+    </div>
+  </li>
+</ol>
+</div>
