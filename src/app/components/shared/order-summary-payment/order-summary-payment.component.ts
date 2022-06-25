@@ -2,12 +2,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-package-price',
-  templateUrl: './package-price.component.html',
-  styleUrls: ['./package-price.component.css']
+  selector: 'app-order-summary-payment',
+  templateUrl: './order-summary-payment.component.html',
+  styleUrls: ['./order-summary-payment.component.css']
 })
-export class PackagePriceComponent implements OnInit  {
-  @Input() product: any;
+export class OrderSummaryPaymentComponent implements OnInit  {
+  constructor(){
+
+  }
+  ngOnInit(): void {
+  }
+ /* @Input() product: any;
   amountUnits: any;
   @Output() formGroupEventEmitter : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() amountProductSelected : EventEmitter<number> = new EventEmitter<number>();
@@ -37,5 +42,7 @@ export class PackagePriceComponent implements OnInit  {
     let temp = this.amountForm.get('amount');
     this.amountUnits =  temp != undefined && temp != null ? temp.value : 1;
   }
+*/
+  total_amount: number = 345;
 
 }

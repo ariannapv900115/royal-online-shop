@@ -2,17 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-order-summary',
-  templateUrl: './order-summary.component.html',
-  styleUrls: ['./order-summary.component.css']
+  selector: 'app-checkout-screen',
+  templateUrl: './checkout-screen.component.html',
+  styleUrls: ['./checkout-screen.component.css']
 })
-export class OrderSummaryComponent implements OnInit  {
-  constructor(){
-
-  }
-  ngOnInit(): void {
-  }
- /* @Input() product: any;
+export class CheckoutScreenComponent implements OnInit  {
+  @Input() product: any;
   amountUnits: any;
   @Output() formGroupEventEmitter : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() amountProductSelected : EventEmitter<number> = new EventEmitter<number>();
@@ -42,7 +37,5 @@ export class OrderSummaryComponent implements OnInit  {
     let temp = this.amountForm.get('amount');
     this.amountUnits =  temp != undefined && temp != null ? temp.value : 1;
   }
-*/
-  total_amount: number = 345;
 
 }

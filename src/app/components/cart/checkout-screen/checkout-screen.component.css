@@ -1,0 +1,25 @@
+.button{
+  padding-top: 120px;
+  left: 400px;
+  position: relative;
+}
+.position{
+  bottom: 50px;
+  width: 750px;
+  position:relative;
+  border: 1px solid #c4ccd4;
+}
+.style-list-group{
+  padding-top: 120px;
+  right: 250px;
+  position: relative;
+}
+.order {
+  display:flex;
+  position: fixed;
+  top: 250px;
+  rigth: 0px;
+  left: 1150px;
+  align-items: center;
+  justify-content: center;
+}

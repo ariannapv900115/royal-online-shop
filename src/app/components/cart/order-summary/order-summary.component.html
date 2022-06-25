@@ -1,22 +1,15 @@
-<div class="modal-content card-body">
-<div class="bg-black py-md-3 text-white-50 bg-opacity-75 rounded">
-  <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
-    Checkout
-  </button>
+<div class="bg-black py-md-3 bg-opacity-75 rounded">
+  <a href="checkout" class="bg-black py-md-3 bg-opacity-75" title="Checkout">
+    <div class="bg-black py-md-3 bg-opacity-75 rounded">
+        <h6 class="my_text text-uppercase">checkout</h6>
+        <span class="nextArrow" aria-hidden="true">&raquo;</span>
+    </div>
+  </a>
 </div>
-<div class="card-body">
-  <p class="fw-lighter text-center fs-6">By placing your order, you agree to the
-    <a href="#" class="tooltip-test" title="Delivery Term" data-bs-container="#exampleModalPopovers">
-      Delivery Term
-    </a>
-  </p>
+<div class="bg-secondary bg-opacity-25 card-body">
   <div class="modal-dialog">
     <h6 class="text-uppercase fw-bolder">order summary</h6>
     <div class="modal-content list-group list-group-flush">
-      <div class="modal-header">
-        <p class="text-uppercase fw-bolder">products</p>
-        <span class="mx-md-2 fw-bolder">{{ total_amount }} </span>
-      </div>
       <div class="modal-body">
           <li class="list-group-item">Product Total<span class="my_text">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }}</span></li>
           <li class="list-group-item">Delivery<span class="my_text">FREE</span></li>
@@ -27,19 +20,36 @@
         </div>
     </div>
   </div>
-</div>
-</div>
-
-<!--<div class="card-body">
-    <div class="form-group">
-       <h6>Cost per Quantity</h6>
-        <div class="input-group">
-          <span class="input-group-text">${{ packagePrice }}</span>
-          <div class="container-fluid">
-            <app-add-minus-price
-            ></app-add-minus-price>
-          </div>
+    <div class="modal-content container-sm ">
+      <div class="modal-header">
+        <span class="text-uppercase fw-bolder">accepted payment methods</span>
       </div>
-   </div>
-</div>-->
-
+      <div class="model-container-fluid">
+          <img
+            class="logo img-fluid img-responsive rounded"
+            src="../../../../assets/img/visa.png "
+            alt="..."
+          />
+        <img
+          class="logo img-fluid img-responsive rounded"
+          src="../../../../assets/img/mastercard.png "
+          alt="..."
+        />
+            <img
+              class="logo img-fluid img-responsive rounded"
+              src="../../../../assets/img/american-express.png "
+              alt="..."
+            />
+            <img
+              class="logo img-fluid img-responsive rounded"
+              src="../../../../assets/img/payoneer.png "
+              alt="..."
+            />
+          <img
+            class="logo img-fluid img-responsive rounded"
+            src="../../../../assets/img/paypal.png "
+            alt="..."
+          />
+        </div>
+    </div>
+</div>

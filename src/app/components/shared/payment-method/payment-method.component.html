@@ -1,0 +1,54 @@
+<div class="position container-sm bg-secondary bg-opacity-25 col-12 rounded">
+  <div class="bg-secondary text-white-50 bg-dark card-body my_textPM rounded">
+    <h6 class="">Payment Method</h6>
+  </div>
+  <div class="border border-dark reverse_card container bg-secondary shadow  col-6 rounded model-container-fluid">
+    <form class="row">
+      <div class="model-container-fluid"><br/></div>
+      <div class="bg-black py-md-2 "><br/></div>
+      <span class=""><br/></span>
+      <div class="bg-black bg-opacity-25 rounded-inline d-inline p-1">
+        <div class=" col-md-2 csv">
+          <input type="text" class="form-control" id="inputCSV" placeholder="CSV">
+        </div>
+      </div>
+      <div class="model-container-fluid"><br/><br/></div>
+    </form>
+  </div>
+  <div class="border border-dark front_card container bg-secondary shadow col-6 rounded model-container-fluid">
+    <form class="row">
+      <div class="logo model-container-fluid">
+        <img
+          class="logo img-fluid img-responsive rounded"
+          src="../../../../assets/img/visa.png "
+          alt="..."
+        />
+        <img
+          class="logo img-fluid img-responsive rounded"
+          src="../../../../assets/img/mastercard.png "
+          alt="..."
+        />
+        <img
+          class="logo img-fluid img-responsive rounded"
+          src="../../../../assets/img/american-express.png "
+          alt="..."
+        />
+      </div>
+      <div class=" p-2 col-md-12">
+        <label for="inputCardNumber" class="text-black-50 fw-bolder form-label">Card Number</label>
+        <input type="text" class="form-control" id="inputCardNumber" placeholder="16 digit">
+      </div>
+      <div class="d-inline p-2 col-md-8">
+        <input type="text" class="form-control" id="inputCardHolder" placeholder="Name as it appear on the card">
+      </div>
+      <div class="d-inline p-2 col-md-4">
+        <input type="text" class="form-control" id="inputMountYearExpiration" placeholder="MM/YY">
+      </div>
+      <br/>
+    </form>
+  </div>
+  <div class="btn btn-group col-6 button_payment">
+    <button class="btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close" type="button">Cancel</button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</div>

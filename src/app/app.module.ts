@@ -7,11 +7,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/shared/home-page/home-page.component';
 import {ProductListComponent} from "./components/product/product-list/product-list.component";
-import {ProductCardComponent} from "./components/product/product-card/product-card.component";
 import {ShoppingCartComponent} from "./components/cart/shopping-cart/shopping-cart.component";
 import {HeaderComponent} from "./components/shared/header/header.component";
 import {HeaderCartIconDataComponent} from "./components/shared/header-carticon-data/header-cart-icon-data.component";
 import {PackageCartModule} from "./shopping-online.module";
+import { CheckoutScreenComponent } from './components/cart/checkout-screen/checkout-screen.component';
+import { DataService } from './service/data-service';
+import { ProductService } from './service/product.service';
 
 
 const appRoutes: Routes = [
@@ -24,8 +26,8 @@ const appRoutes: Routes = [
     component: ProductListComponent
   },
   {
-    path: 'product-details/:id',
-    component: ProductCardComponent
+    path: 'checkout',
+    component: CheckoutScreenComponent
   },
   {
     path: 'shopping_cart',
@@ -50,7 +52,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     PackageCartModule
   ],
-  providers: [],
+  providers: [DataService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

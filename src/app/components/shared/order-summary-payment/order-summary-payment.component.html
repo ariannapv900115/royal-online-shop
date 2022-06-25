@@ -1,0 +1,27 @@
+<div class="bg-secondary bg-opacity-25 card-body">
+  <p class="fw-lighter text-center fs-6">By placing your order, you agree to the
+    <a href="checkout" class="tooltip-test" title="Delivery Term" data-bs-container="#exampleModalPopovers">
+      Delivery Term
+    </a>
+  </p>
+  <div class="modal-dialog">
+    <h6 class="text-uppercase fw-bolder">order summary</h6>
+    <div class="modal-content list-group list-group-flush">
+      <div class="modal-header">
+        <p class="text-uppercase fw-bolder">products</p>
+        <span class="mx-md-2 fw-bolder">{{ total_amount }} </span>
+      </div>
+      <div class="modal-body">
+          <li class="list-group-item">Product Total<span class="my_text">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }}</span></li>
+          <li class="list-group-item">Delivery<span class="my_text">FREE</span></li>
+      </div>
+       <div class="modal-footer ">
+              <span class="fw-bolder">Total </span>
+              <span class="mx-md-2 fw-bolder">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }} </span>
+        </div>
+    </div>
+  </div>
+      <div class="btn btn-group col-12 button_payment">
+        <button type="submit" class="btn btn-primary">Pay</button>
+      </div>
+</div>

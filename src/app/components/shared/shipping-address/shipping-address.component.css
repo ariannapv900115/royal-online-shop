@@ -1,0 +1,16 @@
+.position{
+  bottom: 50px;
+  width: 750px;
+  position:relative;
+  border: 1px solid #c4ccd4;
+}
+.my_textPM{
+  left: -50px;
+  position: relative;
+  width: 175px;
+}
+.button_shipping {
+  bottom: 0px;
+  left: 350px;
+  position: relative;
+}

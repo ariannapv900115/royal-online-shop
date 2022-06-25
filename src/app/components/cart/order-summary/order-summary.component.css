@@ -2,3 +2,18 @@
   position: absolute;
   right: 15px;
 }
+.logo {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 15px;
+  right: 0;
+  height: 60px;
+  margin: 0 16px;
+}
+.nextArrow {
+  position: relative;
+  left: 15px;
+  right: 0px;
+}
+
