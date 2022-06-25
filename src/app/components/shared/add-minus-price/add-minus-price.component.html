@@ -1,22 +1,22 @@
-<form class="form-group" [formGroup]="amountForm">
-  <button type="button" class="btn btn-minus" (click)="minus()">
+<div class="modal-dialog-centered rounded">
+  <div class=" w-50">
+  <label class="input rounded col-form-label">
+    <span class="mx-md-2 fw-bolder">Total Cost : {{ packagePrice  | currency:'USD':'symbol':'1.0-0' }}</span>
+  </label>
+  </div>
+  <div class="btn btn-group-sm btn-group w-50">
+  <button class=" btn btn-minus" (click)="onChangeAmount('minus')">
         <span class="icon">
           <i class="fas fa-minus"></i>
         </span>
-    </button>
-    <label class="input rounded">
-      <input
-        type="text"
-        class="form-control"
-        formControlName="amount"
-        value="{{amount}}"
-        readonly
-      />
-    </label>
-    <button type="button" class="btn btn-add" (click)="add()">
+  </button>
+  <label class="card-text rounded">
+    <span class="input-group-text">{{ amountUnits }}</span>
+  </label>
+  <button type="button" class="btn btn-add" (click)="onChangeAmount('plus')">
         <span class="icon">
           <i class="fas fa-plus"></i>
         </span>
-    </button>
-</form>
-
+  </button>
+    </div>
+</div>

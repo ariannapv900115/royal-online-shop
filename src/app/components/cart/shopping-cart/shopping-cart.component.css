@@ -1,3 +1,25 @@
 .style-list-group{
-  padding-top: 100px;
+  padding-top: 90px;
+  align-self: stretch;
+}
+.hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+}
+.details{
+  position: absolute;
+  left: 350px;
+  align-items: center;
+  justify-content: center;
+}
+.order {
+  display:flex;
+  position: fixed;
+  top: 100px;
+  rigth: 0px;
+  left: 1100px;
+  align-items: center;
+  justify-content: center;
 }

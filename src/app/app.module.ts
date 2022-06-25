@@ -6,13 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/shared/home-page/home-page.component';
-import {PackageCartModule} from "./service/product-package.module";
 import {ProductListComponent} from "./components/product/product-list/product-list.component";
-import {ProductDetailsComponent} from "./components/product/product-details/product-details.component";
+import {ProductCardComponent} from "./components/product/product-card/product-card.component";
 import {ShoppingCartComponent} from "./components/cart/shopping-cart/shopping-cart.component";
 import {HeaderComponent} from "./components/shared/header/header.component";
 import {HeaderCartIconDataComponent} from "./components/shared/header-carticon-data/header-cart-icon-data.component";
-import { DataService } from './service/data-service';
+import {PackageCartModule} from "./shopping-online.module";
 
 
 const appRoutes: Routes = [
@@ -26,7 +25,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'product-details/:id',
-    component: ProductDetailsComponent
+    component: ProductCardComponent
   },
   {
     path: 'shopping_cart',
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     HeaderCartIconDataComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -52,7 +50,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     PackageCartModule
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

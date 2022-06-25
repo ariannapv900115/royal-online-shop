@@ -1,10 +1,9 @@
-<nav class="position-menu navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="container-fluid position-menu navbar navbar-expand-lg navbar-dark bg-dark">
     <img class="logo img-fluid img-responsive rounded img-thumbnail"
-         href="#"
+         routerLink="/"
          alt="Royal Caribbean Online Shopping"
          src="../../../../assets/img/royal.png "
     />
-    <div class="container-fluid">
       <div class="navbar-header">
       <a class="navbar-brand" routerLink="/">Home</a>
       </div>
@@ -25,7 +24,7 @@
             </ul>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" active="!haveProduct" routerLink="shopping_cart">Cart</a>
+            <a class="nav-link"  routerLink="shopping_cart">Cart</a>
           </li>
         </ul>
         </div>
@@ -35,7 +34,6 @@
         </form>
       <div class="chart">
         <app-cart-data></app-cart-data>
-      </div>
       </div>
   </nav>
 

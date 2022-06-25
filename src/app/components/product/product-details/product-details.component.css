@@ -1,13 +1,12 @@
 .details{
   position: relative;
-  bottom: 20px;
-  left: 400px;
+  top: 20px;
+  left: 800px;
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px rgba(255, 255, 255, 0.25);
   color: #181212;
 }
-button{
-  margin: 13px;
+.button{
+  position: relative;
 }
-

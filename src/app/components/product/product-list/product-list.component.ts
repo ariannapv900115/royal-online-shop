@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
 import { ProductService } from 'src/app/service/product.service';
 import { Product} from "../../../models/product";
-import {DataService} from "../../../service/data-service";
+import {PackageCart} from "../../../models/packageCart";
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +9,7 @@ import {DataService} from "../../../service/data-service";
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  productList: Product[] = [];
+  productList: PackageCart[] = [];
 
   constructor(private productService: ProductService) {
 

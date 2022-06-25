@@ -3,11 +3,13 @@
   top: 150px;
   left: 250px;
   right: 100px;
-  align-items: normal;
   justify-content: center;
   box-shadow: 0 1px rgba(255, 255, 255, 0.25);
   display:grid;
   grid-template-columns: 2fr 2fr;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
 
 }
 .style-background-img{

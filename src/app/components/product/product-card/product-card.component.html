@@ -1,0 +1,14 @@
+<div class="shadow list-group-item list-group-item-action rounded">
+    <img
+      src="{{package.product.src}}"
+      class="img-fluid img-responsive rounded"
+      alt="..."
+    />
+  <div class="card-body">
+     <a class="fw-light text-decoration-underline" data-bs-toggle="offcanvas" href="#offcanvasRight" (click)="showDetails()">Details</a>
+       <div class="list-group">
+          <app-side-panel
+          ></app-side-panel>
+       </div>
+  </div>
+</div>

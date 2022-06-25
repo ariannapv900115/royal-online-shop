@@ -5,8 +5,6 @@
           <span class="input-group-text">${{ packagePrice }}</span>
           <div class="container-fluid">
             <app-add-minus-price
-              [packageAvailable]="product.amount"
-              (formGroupEventEmitter)="updatePackageAmount($event)"
             ></app-add-minus-price>
           </div>
       </div>

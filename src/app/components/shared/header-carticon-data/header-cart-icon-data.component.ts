@@ -10,14 +10,13 @@ import {PackageCart} from "../../../models/packageCart";
 })
 export class HeaderCartIconDataComponent implements OnInit {
   amount: number;
-  // @ts-ignore
   modelSubscription: Subscription;
-  constructor(public packageCartService: ProductService) {
+  constructor(private packageCartService: ProductService) {
    this.amount = 0;
+   this.modelSubscription = new Subscription();
   }
 
   ngOnInit() {
-
     this.modelSubscription = this.packageCartService.getProductInCart()
       .subscribe((model: PackageCart[]) => {
         this.amount = 0;

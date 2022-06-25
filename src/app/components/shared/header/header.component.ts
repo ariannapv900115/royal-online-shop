@@ -9,18 +9,13 @@ import {PackageCart} from "../../../models/packageCart";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  haveProduct: boolean = false;
   modelSubscription: Subscription;
   constructor(public productService: ProductService) {
     this.modelSubscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.modelSubscription = this.productService.getProductInCart()
-      .subscribe((model: PackageCart[]) => {
-        this.haveProduct = model.length > 0
-      });
+
   }
 
 }

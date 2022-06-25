@@ -1,0 +1,23 @@
+<div class="align-self-auto offcanvas offcanvas-end sidepanel is-opened"
+  tabindex="-1" id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+  data-bs-scroll="true"
+  data-bs-backdrop="false">
+  <div class="offcanvas-header is-black navbar navbar-expand-lg navbar-dark bg-dark">
+    <button
+      type="button"
+      class="btn-close btn-close-white"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body card-body">
+    <app-product-details
+    (amountProductSelected)="updateAmountSelected($event)"
+    ></app-product-details>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-bs-dismiss="offcanvas" aria-label="Close" (click)="closeDetail()" type="button">Close</button>
+      <button type="button" class="btn btn-primary" (click)="addToCart()">Save</button>
+    </div>
+  </div>
+</div>

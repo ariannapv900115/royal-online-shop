@@ -4,23 +4,24 @@ import { Product } from '../models/product';
 import {PackageCart} from "../models/packageCart";
 
 
-@Injectable()
+@Injectable({providedIn:'root'})
 export class ProductService {
 
-  product: Product[]=[];
+  product: PackageCart[]=[];
   productMock: Product[];
   package: PackageCart[]=[];
   selectedProductIndex: number = 0;
-  product$: Subject<Product[]> = new Subject<Product[]>();
+  product$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
   productInCart$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
-  selectedProduct$: Subject<Product> = new Subject<Product>();
+  selectedProduct$: Subject<PackageCart> = new Subject<PackageCart>();
+  selectedProductIndex$: Subject<number> = new Subject<number>();
 
   constructor() {
     this.productMock = [
       {
         id: 1,
         src: 'https://mdbootstrap.com/img/new/standard/city/043.webp',
-        title: 'Package tour # 1',
+        name: 'Package tour # 1',
         price: 400 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 6
@@ -28,7 +29,7 @@ export class ProductService {
       {
         id: 2,
         src: 'https://mdbootstrap.com/img/new/standard/city/046.webp',
-        title: 'Package tour # 2',
+        name: 'Package tour # 2',
         price: 350 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 10
@@ -36,46 +37,59 @@ export class ProductService {
       {
         id: 3,
         src: 'https://mdbootstrap.com/img/new/standard/city/039.webp',
-        title: 'Package tour # 3',
-        price: 1000 ,
+        name: 'Package tour # 3',
+        price: 1400 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
-        amount: 6
+        amount: 5
       },
       {
-        id: 2,
+        id: 4,
         src: 'https://mdbootstrap.com/img/new/standard/city/044.webp',
-        title: 'Package tour # 2',
+        name: 'Package tour # 4',
         price: 350 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 10
       },
       {
-        id: 3,
+        id: 5,
         src: 'https://mdbootstrap.com/img/new/standard/city/042.webp',
-        title: 'Package tour # 3',
+        name: 'Package tour # 5',
         price: 1000 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 6
       },
       {
-        id: 4,
+        id: 6,
         src: 'https://mdbootstrap.com/img/new/standard/city/041.webp',
-        title: 'Package tour # 4',
+        name: 'Package tour # 6',
         price: 780 ,
         description: ' This is a longer card with supporting text below as a natural lead-in additional content.',
         amount: 4
       }];
   }
 
-  getProductList(): Observable<Product[]> {
+  getProductList(): Observable<PackageCart[]> {
     return this.product$.asObservable();
   }
 
-  addProduct(): Product[] {
+  addProduct(): PackageCart[] {
     this.productMock.forEach(productMock => {
-      this.product.push(productMock);
+      let pack  = {
+        product : {
+          id:-1,
+          price:0,
+          name:'',
+          src:'',
+          description:'',
+          amount:0
+        },
+        amountSelected:0
+      }
+      pack.product = productMock;
+      pack.amountSelected = 0;
+      this.product.push(pack);
+      this.product$.next(this.product);
     });
-    this.product$.next(this.product);
     return this.product;
   }
 
@@ -84,28 +98,33 @@ export class ProductService {
   }
 
   addProductToCart(product: Product, amountSelected: number): void {
-
-    let pack : PackageCart = {
+    let pack  = {
       product : {
         id:-1,
         price:0,
-        title:'',
+        name:'',
         src:'',
         description:'',
         amount:0
       },
       amountSelected:0
     }
-      if(!!this.package && this.package.length > 0){
-       this.package.map(p => {
-          if(p.product.id === product.id)
-            p.amountSelected = amountSelected;
-      });}
-      else {
-        pack.product = product;
-        pack.amountSelected = amountSelected;
-        this.package.push(pack)
-      }
+    let existProduct = false;
+    let index =
+      !!this.package && this.package.length == 0
+      ? null
+      : this.package.find(p => {
+        if (p.product.id === product.id){
+          p.amountSelected = amountSelected;
+          existProduct = true;
+        }
+        else existProduct = false;
+      });
+     if(!existProduct && (index == null || index === undefined)){
+       pack.product = product;
+       pack.amountSelected = amountSelected;
+       this.package.push(pack)
+     }
     this.productInCart$.next(this.package);
   }
 
@@ -119,11 +138,24 @@ export class ProductService {
     }
   }
 
-  getProductSelected(): Observable<Product> {
+  getProductSelected(): Observable<PackageCart> {
     return this.selectedProduct$.asObservable();
   }
-  sendProductSelected(product: Product, index: number): void {
+
+  sendProductSelected(product: PackageCart, index: number): void {
     this.selectedProductIndex = index;
+    this.selectedProductIndex$.next(this.selectedProductIndex);
     this.selectedProduct$.next(product);
+  }
+  sendProductInCart(): void {
+    this.productInCart$.next(this.package);
+  }
+
+  getIndexOfProductSelected() {
+    return this.selectedProductIndex$.asObservable();
+  }
+
+  updatePackageAmount(index: number, amount: number): void {
+    this.product[index].amountSelected = amount;
   }
 }

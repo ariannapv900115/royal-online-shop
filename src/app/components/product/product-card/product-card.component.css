@@ -1,9 +1,13 @@
 .details{
   position: relative;
-  top: 20px;
-  left: 800px;
+  bottom: 20px;
+  left: 400px;
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px rgba(255, 255, 255, 0.25);
   color: #181212;
 }
+button{
+  margin: 13px;
+}
+

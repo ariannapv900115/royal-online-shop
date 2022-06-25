@@ -1,15 +1,17 @@
-<div class=" shadow rounded list-group-item list-group-item-action">
-    <img
-      src="{{product.src}}"
-      class="img-fluid img-responsive rounded"
-      alt="..."
-    />
-  <div class="card-body">
-     <a class="fw-light text-decoration-underline" data-bs-toggle="offcanvas" href="#offcanvasRight" (click)="showDetails()">Details</a>
-       <div class="list-group">
-          <app-sidepanel
-            (amountPerProductSelected)="addProductToCart($event)">
-          </app-sidepanel>
-       </div>
+<div class="card card-body">
+  <div class="bg-success p-2 text-dark bg-opacity-10 shadow rounded">
+    <h4 class="card-title">
+      {{package.product.name}}
+    </h4>
+    <div class="text-muted">
+    <p class="card-text text-sm-start">
+      {{package.product.description}}
+    </p>
+    <p class="card-text">
+      Quantity available: {{package.product.amount}}
+    </p>
+    </div>
   </div>
+    <br/>
+  <app-add-minus-price></app-add-minus-price>
 </div>
