@@ -7,21 +7,40 @@
   <div class="modal-dialog">
     <h6 class="text-uppercase fw-bolder">order summary</h6>
     <div class="modal-content list-group list-group-flush">
-      <div class="modal-header">
-        <p class="text-uppercase fw-bolder">products</p>
-        <span class="mx-md-2 fw-bolder">{{ total_amount }} </span>
-      </div>
-      <div class="modal-body">
-          <li class="list-group-item">Product Total<span class="my_text">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }}</span></li>
-          <li class="list-group-item">Delivery<span class="my_text">FREE</span></li>
+      <div class="modal-content list-group list-group-flush">
+        <div class="modal-body list-group" *ngIf="goodData">
+          <span class="fw-bolder">Delivery Address </span>
+          <div class="modal-body list-group-flush">
+         {{ order.shippingAddress.contact.firstName +" "
+          + order.shippingAddress.contact.lastName +" " +order.shippingAddress.contact.phoneNumbers }}
+            </div>
+          <div class="modal-body">
+          {{ order.shippingAddress.addressLine1 +" "
+          + order.shippingAddress.city +" " +order.shippingAddress.postCode }}
+          </div>
+          <span class="fw-bolder">Payment Method </span>
+          <div class="modal-body list-group-flush">
+            {{ order.paymentMethod.accountNumber +" "
+          + order.paymentMethod.expirationDate  +" "+ order.paymentMethod.csv}}
+          </div>
+          <div class="modal-body">
+            {{ order.paymentMethod.csv  }}
+          </div>
+        </div>
+        <div class="modal-body">
+        <li class="list-group-item">Product Total<span class="my_text">{{ order.productTotal }}</span></li>
+          <li class="list-group-item">Delivery Fee<span class="my_text">{{ fee | currency:'USD':'symbol':'1.0-0'  }}</span></li>
       </div>
        <div class="modal-footer ">
-              <span class="fw-bolder">Total </span>
-              <span class="mx-md-2 fw-bolder">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }} </span>
+              <span class="fw-bolder">Final Total </span>
+              <span class="mx-md-2 fw-bolder">{{ order.totalAmount  | currency:'USD':'symbol':'1.0-0' }} </span>
         </div>
+      </div>
     </div>
   </div>
       <div class="btn btn-group col-12 button_payment">
-        <button type="submit" class="btn btn-primary">Pay</button>
+        <button type="submit" class="btn btn-primary"  (click)="submitOrder()" routerLink="/">Pay</button>
       </div>
 </div>
+
+

@@ -2,21 +2,52 @@ import { Injectable } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import { Product } from '../models/product';
 import {PackageCart} from "../models/packageCart";
+import { Order } from '../models/order';
 
 
 @Injectable({providedIn:'root'})
 export class ProductService {
 
+  order: Order;
+  //product-list
   product: PackageCart[]=[];
   productMock: Product[];
+  //product-list-in-cart
   package: PackageCart[]=[];
   selectedProductIndex: number = 0;
   product$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
   productInCart$: Subject<PackageCart[]> = new Subject<PackageCart[]>();
   selectedProduct$: Subject<PackageCart> = new Subject<PackageCart>();
+  selectedProductInCart$: Subject<PackageCart> = new Subject<PackageCart>();
   selectedProductIndex$: Subject<number> = new Subject<number>();
+  selectedProductIndexInCart$: Subject<number> = new Subject<number>();
+  orderSubject$: Subject<Order> = new Subject<Order>();
 
   constructor() {
+    this.order = {
+      orderId: '',
+      shippingAddress: {
+        contact:{
+          firstName: '',
+          lastName: '',
+          phoneNumbers:0,
+          email: '',
+        },
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        postCode: '',
+        state:'',
+      },
+      paymentMethod: {
+        accountName: '',
+        csv: 0,
+        accountNumber: 0,
+        expirationDate: '',
+      },
+      totalAmount:0,
+      productTotal:0
+    };
     this.productMock = [
       {
         id: 1,
@@ -72,7 +103,7 @@ export class ProductService {
     return this.product$.asObservable();
   }
 
-  addProduct(): PackageCart[] {
+  addProduct():void {
     this.productMock.forEach(productMock => {
       let pack  = {
         product : {
@@ -88,9 +119,41 @@ export class ProductService {
       pack.product = productMock;
       pack.amountSelected = 0;
       this.product.push(pack);
-      this.product$.next(this.product);
+
     });
-    return this.product;
+    this.product$.next(this.product);
+  }
+
+  getOrder(): Observable<Order> {
+    return this.orderSubject$.asObservable();
+  }
+
+  addOrder(order: Order):void {
+    this.order = {
+      orderId: order.orderId,
+      shippingAddress: {
+        contact:{
+          firstName: order.shippingAddress.contact.firstName,
+          lastName: order.shippingAddress.contact.lastName,
+          phoneNumbers:order.shippingAddress.contact.phoneNumbers,
+          email: order.shippingAddress.contact.email,
+        },
+        addressLine1: order.shippingAddress.addressLine1,
+        addressLine2: order.shippingAddress.addressLine2,
+        city: order.shippingAddress.city,
+        postCode: order.shippingAddress.postCode,
+        state: order.shippingAddress.state,
+      },
+      paymentMethod: {
+        accountName: order.paymentMethod.accountName,
+        csv: order.paymentMethod.csv,
+        accountNumber: order.paymentMethod.accountNumber,
+        expirationDate: order.paymentMethod.expirationDate,
+      },
+      totalAmount:order.totalAmount,
+      productTotal:order.productTotal,
+    };
+    this.orderSubject$.next(this.order);
   }
 
   getProductInCart(): Observable<PackageCart[]> {
@@ -130,13 +193,24 @@ export class ProductService {
 
   removeProductFromCart(productId: number): void {
     if(!!this.package && this.package.length > 0){
-      // @ts-ignore
-      let indexPack = this.package.findIndex(p => p.product.id === productId);
-      if(indexPack > -1){
-        this.productInCart$.next(this.package.slice(indexPack,1));
-      }
+      this.package.forEach((value,index)=>{
+        if(value.product.id==productId)
+          this.package.splice(index,1);
+      });
+      this.productInCart$.next(this.package);
     }
   }
+
+  getProductSelectedInCart(): Observable<PackageCart> {
+    return this.selectedProductInCart$.asObservable();
+  }
+
+  sendProductSelectedInCart(product: PackageCart, index: number): void {
+    this.selectedProductIndex = index;
+    this.selectedProductIndexInCart$.next(this.selectedProductIndex);
+    this.selectedProductInCart$.next(product);
+  }
+
 
   getProductSelected(): Observable<PackageCart> {
     return this.selectedProduct$.asObservable();
@@ -152,7 +226,22 @@ export class ProductService {
     return this.selectedProductIndex$.asObservable();
   }
 
+  getIndexOfProductSelectedInCart() {
+    return this.selectedProductInCart$.asObservable();
+  }
+
   updatePackageAmount(index: number, amount: number): void {
     this.product[index].amountSelected = amount;
+  }
+
+  updatePackageAmountInCart(index: number, amount: number): void {
+    this.package[index].amountSelected = amount;
+  }
+
+  NextProductInCart() {
+    this.productInCart$.next(this.package);
+  }
+  NextProductList() {
+    this.product$.next(this.product);
   }
 }

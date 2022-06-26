@@ -1,14 +1,15 @@
 .style-list-group{
-  padding-top: 90px;
   align-self: stretch;
 }
 .amount {
   align-items: center;
-  left: -20px;
+  right: 340px;
+  bottom: 30px;
 }
 .details{
-  position: absolute;
-  left: 15px;
+  top: 15px;
+  position: relative;
+  left: 315px;
   align-items: center;
   justify-content: center;
 }
@@ -21,10 +22,4 @@
   align-items: center;
   justify-content: center;
 }
-.color-menu {
-  background-color: #0b2149;
-}
-.my_checkboxButton{
-  position: absolute;
-  background-color: #0b2149;
-}
+

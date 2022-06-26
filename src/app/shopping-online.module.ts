@@ -15,6 +15,8 @@ import {OrderSummaryComponent} from "./components/cart/order-summary/order-summa
 import {ShippingAddressComponent} from "./components/shared/shipping-address/shipping-address.component";
 import {PaymentMethodComponent} from "./components/shared/payment-method/payment-method.component";
 import {OrderSummaryPaymentComponent} from "./components/shared/order-summary-payment/order-summary-payment.component";
+import {ShoppingCartDetailsComponent} from "./components/cart/shopping-cart-details/shopping-cart-details.component";
+import {InputMessageComponent} from "./components/shared/input-message/input-message.component";
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import {OrderSummaryPaymentComponent} from "./components/shared/order-summary-pa
     OrderSummaryComponent,
     ShippingAddressComponent,
     PaymentMethodComponent,
-    OrderSummaryPaymentComponent
+    OrderSummaryPaymentComponent,
+    ShoppingCartDetailsComponent,
+    InputMessageComponent
   ],
   exports: [
     ProductListComponent,

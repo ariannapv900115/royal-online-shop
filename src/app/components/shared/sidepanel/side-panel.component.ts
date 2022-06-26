@@ -18,9 +18,10 @@ export class SidePanelComponent implements OnInit {
   isAmountSelectedChanged: boolean;
   constructor(private packageCartService: ProductService, private dataService: DataService) {
     this.packageIndexSelected = -1;
+    this.isAmountSelectedChanged = false;
+    this.amountProductSelected = 0;
     this.closed =  this.dataService.getClose();
     this.modelSubscription = new Subscription();
-    this.isAmountSelectedChanged = false;
     this.package = {product :  {
         id:-1,
         price:0,
@@ -29,7 +30,6 @@ export class SidePanelComponent implements OnInit {
         description:'',
         amount:0
     }, amountSelected :0}
-    this.amountProductSelected = 0;
   }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import { PackageCart } from 'src/app/models/packageCart';
 import { DataService } from 'src/app/service/data-service';
 import {ProductService} from "../../../service/product.service";
 import {Subscription} from "rxjs";
+import { ListType } from 'src/app/enum/type-list.enum';
 
 @Component({
   selector: 'app-product-details',
@@ -13,6 +14,7 @@ export class ProductDetailsComponent implements OnInit {
   package: PackageCart;
   packagePrice : number = 0;
   amountUnits: number;
+  typeList: ListType = ListType.PRODUCT;
   @Output() amountProductSelected: EventEmitter<number> = new EventEmitter<number>();
   modelSubscription: Subscription;
   constructor(public packageCartService: ProductService) {

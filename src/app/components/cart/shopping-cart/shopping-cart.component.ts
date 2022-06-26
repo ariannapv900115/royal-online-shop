@@ -10,19 +10,51 @@ import {Subscription} from "rxjs";
 })
 export class ShoppingCartComponent implements OnInit {
 
-  productInCart: PackageCart[]=[];
   itemSubscription: Subscription = new Subscription();
+  productInCart: PackageCart[]=[];
   canEdit: boolean;
-  constructor(public productService: ProductService) {
+  orderTotal: number = 0;
+  productTotal: number = 0;
+  amountProductSelected: number;
+  isAmountSelectedChanged: boolean;
+  packageIndexSelected: number;
+  constructor(private productService: ProductService) {
     this.canEdit = false;
+    this.packageIndexSelected = -1;
+    this.isAmountSelectedChanged = false;
+    this.amountProductSelected = 0;
   }
 
    ngOnInit(): void {
-
-      this.productInCart = this.productService.package;
-
+     this.itemSubscription = this.updateProductList();
+     this.productService.NextProductInCart();
    }
+   updateProductList(): Subscription {
+     this.productService.getIndexOfProductSelectedInCart();
+     return this.productService.getProductInCart()
+       .subscribe((model: PackageCart[]) => {
+         this.productInCart = model;
+         this.orderTotal = 0;
+         this.productTotal = 0;
+         model.forEach(pk => {
+           this.orderTotal += pk.amountSelected * pk.product.price;
+           this.productTotal += pk.amountSelected;
+         });
+       });
+    }
+
    showEditAmount(){
     this.canEdit = !this.canEdit;
    }
+
+  deleteFromCartById(id: number): void {
+    this.productService.removeProductFromCart(id);
+    this.updateProductList();
+  }
+
+  updateAmountSelectedInCart(amount: number) {
+    this.isAmountSelectedChanged = this.amountProductSelected !== amount;
+    this.amountProductSelected = amount;
+    this.productService.updatePackageAmountInCart(this.packageIndexSelected, this.amountProductSelected);
+  }
 }

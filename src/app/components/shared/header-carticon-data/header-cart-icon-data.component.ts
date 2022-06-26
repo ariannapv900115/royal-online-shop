@@ -24,5 +24,6 @@ export class HeaderCartIconDataComponent implements OnInit {
           this.amount += pk.amountSelected;
         });
       });
+    this.packageCartService.NextProductInCart();
   }
 }

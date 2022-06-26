@@ -44,9 +44,4 @@ export class ProductCardComponent implements OnInit {
     this.packageCartService.sendProductSelected(this.package,this.index)
   }
 
-    onSelectionChange(): void {
-      this.modelSubscription = this.packageCartService.getProductSelected().subscribe(prod => {
-        this.package = prod;
-    });
-  }
 }

@@ -8,9 +8,9 @@ import {ProductService} from "../../../service/product.service";
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  date:  any;
 
-  constructor(public productService: ProductService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
 

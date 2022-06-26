@@ -9,13 +9,9 @@ import {PackageCart} from "../../../models/packageCart";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  modelSubscription: Subscription;
-  constructor(public productService: ProductService) {
-    this.modelSubscription = new Subscription();
-  }
 
+  constructor(){}
   ngOnInit(): void {
 
   }
-
 }

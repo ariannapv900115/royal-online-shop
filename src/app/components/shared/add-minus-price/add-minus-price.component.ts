@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import {Subject, Subscription, takeUntil} from "rxjs";
+import {Subscription} from "rxjs";
 import {PackageCart} from "../../../models/packageCart";
 import {ProductService} from "../../../service/product.service";
+import {ListType} from "../../../enum/type-list.enum";
 
 
 @Component({
@@ -12,10 +12,11 @@ import {ProductService} from "../../../service/product.service";
 })
 export class AddMinusPriceComponent implements OnInit {
 
+  @Input() typeList: ListType = ListType.PRODUCT;
+  @Output() amountProductSelected: EventEmitter<number> = new EventEmitter<number>();
   package: PackageCart;
   packagePrice : number = 0;
   amountUnits: number;
-  @Output() amountProductSelected: EventEmitter<number> = new EventEmitter<number>();
   modelSubscription: Subscription;
   constructor(public packageCartService: ProductService) {
     this.package = { product: {
@@ -31,17 +32,21 @@ export class AddMinusPriceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.packageCartService.getProductSelected().subscribe(pk => {
-      this.package = pk;
-      this.packagePrice = pk.product.price;
-      this.amountUnits = pk.amountSelected;
-    });
-  }
-  ngOnDestroy(): void {
-    this.modelSubscription.unsubscribe();
-  }
-  resetAmountProductSelected(): void {
-    this.amountUnits = 0;
+    if(this.typeList == ListType.PRODUCT){
+      this.packageCartService.getProductSelected().subscribe(pk => {
+        this.package = pk;
+        this.packagePrice = pk.product.price;
+        this.amountUnits = pk.amountSelected;
+      });
+    }
+    else {
+      this.packageCartService.getProductSelectedInCart().subscribe(pk => {
+        this.package = pk;
+        this.packagePrice = pk.product.price;
+        this.amountUnits = pk.amountSelected;
+      });
+    }
+
   }
 
   onChangeAmount($event: string): void {

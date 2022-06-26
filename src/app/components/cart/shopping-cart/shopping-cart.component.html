@@ -3,13 +3,9 @@
   <div class="p-lg-1 w-50 p-2">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">
+      <a class="nav-link active" aria-current="page">
         <h5 class="text-uppercase fw-bolder">your bag</h5>
       </a>
-    </li>
-    <li class="nav-item">
-
-      <a class="nav-link" href="#">Wishlist</a>
     </li>
   </ul>
   <br/>
@@ -26,21 +22,12 @@
                 />
             </div>
             <div class="details">
-              <h6 class="text-uppercase fw-bolder"> {{packageCart.product.name}}</h6>
-              <div class="text-muted">
-                <p class="card-text card-text text-sm-start">
-                  In Stock: {{packageCart.product.amount}}
-                </p>
-                <div class="bg-black py-md-2 bg-opacity-50 card-body position-absolute w-50 amount text-white-50" *ngIf="canEdit">
-                  <app-add-minus-price></app-add-minus-price>
-                </div>
-                <br/>
-                <div class="style-list-group footer">
-                  <a class="card-link" (click)="showEditAmount()">Edit</a>
-                <a class="card-link">Delete</a>
-                <a class="card-link">Move to wishlist!</a>
-                </div>
-              </div>
+              <app-shopping-cart-details
+                [index]="i"
+                [packageCart]="packageCart"
+                (deleteEvent)="deleteFromCartById($event)"
+                (amountProductSelected)="updateAmountSelectedInCart($event)"
+              ></app-shopping-cart-details>
             </div>
           </div>
      </li>
@@ -49,7 +36,10 @@
    </ul>
  </div>
   <div class="card-container order">
-    <app-order-summary></app-order-summary>
+    <app-order-summary
+      [productTotal]="productTotal"
+      [orderTotal]="orderTotal"
+    ></app-order-summary>
   </div>
 </div>
 </div>

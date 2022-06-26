@@ -1,9 +1,9 @@
 <div class="order-summary">
-<div class="bg-black py-md-3 bg-opacity-75 rounded">
-  <a href="checkout" class="bg-black py-md-3 bg-opacity-75" title="Checkout">
-    <div class="bg-black py-md-3 bg-opacity-75 rounded">
-        <h6 class="my_text text-uppercase">checkout</h6>
-        <span class="nextArrow" aria-hidden="true">&raquo;</span>
+<div class="color-menu py-md-3 bg-opacity-75 rounded">
+  <a href="checkout" class="bg-black py-md-3 bg-opacity-75 text-white-50" title="Checkout">
+    <div class="bg-secondary py-md-3 bg-opacity-25 rounded">
+      <button type="submit" class="btn btn-secondary text-uppercase my_checkboxButton col-12">checkout</button>
+      <span class="nextArrow" aria-hidden="true">&raquo;</span>
     </div>
   </a>
 </div>
@@ -12,12 +12,11 @@
     <h6 class="text-uppercase fw-bolder">order summary</h6>
     <div class="modal-content list-group list-group-flush">
       <div class="modal-body">
-          <li class="list-group-item">Product Total<span class="my_text">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }}</span></li>
-          <li class="list-group-item">Delivery<span class="my_text">FREE</span></li>
+          <li class="list-group-item">Product Total<span class="my_text">{{ productTotal }}</span></li>
       </div>
        <div class="modal-footer ">
               <span class="fw-bolder">Total </span>
-              <span class="mx-md-2 fw-bolder">{{ total_amount  | currency:'USD':'symbol':'1.0-0' }} </span>
+              <span class="mx-md-2 fw-bolder">{{ orderTotal  | currency:'USD':'symbol':'1.0-0' }} </span>
         </div>
     </div>
   </div>
@@ -41,16 +40,6 @@
               src="../../../../assets/img/american-express.png "
               alt="..."
             />
-            <img
-              class="logo img-fluid img-responsive rounded"
-              src="../../../../assets/img/payoneer.png "
-              alt="..."
-            />
-          <img
-            class="logo img-fluid img-responsive rounded"
-            src="../../../../assets/img/paypal.png "
-            alt="..."
-          />
         </div>
     </div>
 </div>

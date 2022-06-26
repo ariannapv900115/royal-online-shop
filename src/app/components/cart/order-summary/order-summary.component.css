@@ -2,6 +2,11 @@
   position: absolute;
   right: 15px;
 }
+.my_checkboxButton{
+  top: 25px;
+  position: absolute;
+  right: 0px;
+}
 .logo {
   position: relative;
   display: inline-block;
@@ -20,4 +25,6 @@
   position: relative;
   top: 100px;
 }
-
+.color-menu {
+  background-color: #0b2149;
+}

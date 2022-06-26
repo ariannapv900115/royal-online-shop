@@ -1,0 +1,15 @@
+<div class="details">
+  <h6 class="text-uppercase fw-bolder"> {{packageCart.product.name}}</h6>
+  <div class="text-muted">
+    <p class="card-text text-sm-start">
+      In Stock: {{packageCart.product.amount}}
+    </p>
+    <p class="card-text text-sm-start">
+      Selected: {{packageCart.amountSelected}}
+    </p>
+    <br/>
+    <div class="style-list-group footer">
+      <a class="card-link" (click)="deleteFromCart()">Delete</a>
+    </div>
+  </div>
+</div>

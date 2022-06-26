@@ -14,6 +14,7 @@ import {PackageCartModule} from "./shopping-online.module";
 import { CheckoutScreenComponent } from './components/cart/checkout-screen/checkout-screen.component';
 import { DataService } from './service/data-service';
 import { ProductService } from './service/product.service';
+import { OrderSummaryPaymentComponent } from './components/shared/order-summary-payment/order-summary-payment.component';
 
 
 const appRoutes: Routes = [
@@ -34,9 +35,13 @@ const appRoutes: Routes = [
     component: ShoppingCartComponent
   },
   {
+    path: 'summary-payment',
+    component: OrderSummaryPaymentComponent
+  },
+  {
     path: '**',
     component: HomePageComponent
-  },
+  }
 ];
 
 @NgModule({
