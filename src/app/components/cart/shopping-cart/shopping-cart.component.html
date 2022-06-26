@@ -13,26 +13,25 @@
     </li>
   </ul>
   <br/>
- <div class="rounded list-group list-group-flush" *ngFor="let packageCart of productInCart; let i = index">
-   <ul class="list-group list-group-flush w-75 p-3 ">
-     <li class=" list-group-item d-inline p-2">
-          <div class="row g-0 bg-light position-relative" style="width: 18rem;">
-            <div class="ratio ratio-4x3">
+
+   <ul class="list-group list-group-flush p-3  bg-secondary bg-opacity-25 card-body">
+     <div class="rounded list-group list-group-flush " *ngFor="let packageCart of productInCart; let i = index">
+     <li class=" list-group-item d-inline p-2  bg-secondary bg-opacity-50 card-body rounded">
+          <div class="row g-0 " style="width: 18rem;">
+            <div class="shadow ratio ratio-4x3">
                 <img
                   src="{{packageCart.product.src}}"
-                  class="shadow rounded float-start img-fluid"
-                  alt="..."
+                  class="shadow img-fluid"
+                  alt="{{packageCart.product.name}}"
                 />
             </div>
             <div class="details">
-              <h4 class="card-title">
-                {{packageCart.product.name}}
-              </h4>
+              <h6 class="text-uppercase fw-bolder"> {{packageCart.product.name}}</h6>
               <div class="text-muted">
                 <p class="card-text card-text text-sm-start">
                   In Stock: {{packageCart.product.amount}}
                 </p>
-                <div class="modal-content position-absolute" *ngIf="canEdit">
+                <div class="bg-black py-md-2 bg-opacity-50 card-body position-absolute w-50 amount text-white-50" *ngIf="canEdit">
                   <app-add-minus-price></app-add-minus-price>
                 </div>
                 <br/>
@@ -45,55 +44,15 @@
             </div>
           </div>
      </li>
-   </ul>
+     <br/>
  </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+   </ul>
  </div>
   <div class="card-container order">
     <app-order-summary></app-order-summary>
   </div>
-
 </div>
 </div>
-  <!--<ul class="list-group list-group-flush">
-    <li class="list-group-item justify-content-between align-items-start">
-    <div class="card-container shadow rounded" *ngFor="let packageCart of productInCart; let i = index">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Título de la tarjeta</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Subtítulo de la tarjeta</h6>
-          <img
-            src="{{packageCart.product.src}}"
-            class="img-fluid img-responsive rounded"
-            alt="..."
-          />
-          <p class="card-text">Un texto de ejemplo rápido para colocal cerca del título de la tarjeta y componer la mayor parte del contenido de la tarjeta.</p>
-          <a href="#" class="card-link">Enlace de tarjeta</a>
-          <a href="#" class="card-link">Otro enlace</a>
-        </div>
-      </div>
-      <app-product-details></app-product-details>
-
-    </div>
-      <br/>
-
-    </li>-->
 
 
 

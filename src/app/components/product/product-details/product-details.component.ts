@@ -38,9 +38,9 @@ export class ProductDetailsComponent implements OnInit {
   ngOnDestroy(): void {
     this.modelSubscription.unsubscribe();
   }
-  resetAmountProductSelected(): void {
-      this.amountUnits = 0;
+
+  updateAmountSelected(amountSelected: number) {
+    this.amountUnits = amountSelected;
+    this.amountProductSelected.emit(this.amountUnits);
   }
-
-
 }

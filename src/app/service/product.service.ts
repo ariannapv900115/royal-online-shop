@@ -147,9 +147,6 @@ export class ProductService {
     this.selectedProductIndex$.next(this.selectedProductIndex);
     this.selectedProduct$.next(product);
   }
-  sendProductInCart(): void {
-    this.productInCart$.next(this.package);
-  }
 
   getIndexOfProductSelected() {
     return this.selectedProductIndex$.asObservable();

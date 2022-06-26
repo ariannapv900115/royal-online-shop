@@ -1,4 +1,4 @@
-<nav class="container-fluid position-menu navbar fixed-top navbar-expand-lg navbar-dark " style="background-color: #0b2149;">
+<nav class="container-fluid position-menu navbar navbar-expand-lg navbar-dark ">
   <a class="navbar-brand card-title"  routerLink="/">
     <div class="logo bg-light bg-opacity-25 py-md-2 d-inline-block rounded col-sm-6 padding shadow">
       <img class="logo img-fluid img-responsive rounded "
@@ -8,62 +8,28 @@
       <span class="card-body rounded shadow fw-lighter fst-italic">Blessed Tour Cruise</span>
     </div>
 </a>
-
-      <!--<div class="navbar-header">
-      <a class="navbar-brand" routerLink="/">Home</a>
+  <div class="navbar-header">
+      <a class="navbar-brand text-uppercase fw-lighter" routerLink="/">Home</a>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Product
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" routerLink="product">Shopping List</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="/">Add Product</a></li>
-            </ul>
+          <li class="nav-item " >
+            <a class="nav-link text-uppercase fw-lighter"  routerLink="product">Find a Tour</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link"  routerLink="shopping_cart">Cart</a>
+            <a class="nav-link text-uppercase fw-lighter"  routerLink="shopping_cart">Cart</a>
           </li>
         </ul>
         </div>
-        <form class="d-flex" role="search">
+       <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
-        </form>
+        </form>-->
 
       <div class="chart">
         <app-cart-data></app-cart-data>
       </div>
   </nav>
-
-<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">-->
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="#scrollspyHeading1">FIND A TOUR</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#scrollspyHeading2">Segundo</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#scrollspyHeading3">Tercero</a></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading4">Cuarto</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading5">Quinto</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-  <div class="" id="scrollspyHeading1">
-   <app-product-list></app-product-list>
-  </div>
-</div>

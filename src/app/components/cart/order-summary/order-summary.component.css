@@ -16,4 +16,8 @@
   left: 15px;
   right: 0px;
 }
+.order-summary{
+  position: relative;
+  top: 100px;
+}
 

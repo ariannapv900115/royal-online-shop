@@ -1,5 +1,5 @@
-<div class="card card-body">
-  <div class="bg-success p-2 text-dark bg-opacity-10 shadow rounded">
+<div class="container-fluid">
+  <div class="modal-body bg-secondary bg-opacity-25 text-dark rounded">
     <h4 class="card-title">
       {{package.product.name}}
     </h4>
@@ -13,5 +13,7 @@
     </div>
   </div>
     <br/>
-  <app-add-minus-price></app-add-minus-price>
+  <app-add-minus-price
+    (amountProductSelected)="updateAmountSelected($event)"
+  ></app-add-minus-price>
 </div>

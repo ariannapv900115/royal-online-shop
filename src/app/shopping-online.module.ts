@@ -41,6 +41,7 @@ import {OrderSummaryPaymentComponent} from "./components/shared/order-summary-pa
     AddMinusPriceComponent,
     SidePanelComponent,
     CheckoutScreenComponent,
+    HomePageComponent,
   ],
   providers: [
     ProductService,

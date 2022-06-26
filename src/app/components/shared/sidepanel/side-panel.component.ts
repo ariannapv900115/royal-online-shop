@@ -50,11 +50,12 @@ export class SidePanelComponent implements OnInit {
   addToCart() {
     if(this.isAmountSelectedChanged)
     this.packageCartService.addProductToCart(this.package.product, this.package.amountSelected);
+    this.isAmountSelectedChanged = !this.isAmountSelectedChanged;
   }
 
   updateAmountSelected(amount: number) {
-    this.amountProductSelected = amount
-    this.isAmountSelectedChanged = true;
+    this.isAmountSelectedChanged = this.amountProductSelected !== amount;
+    this.amountProductSelected = amount;
     this.packageCartService.updatePackageAmount(this.packageIndexSelected, this.amountProductSelected);
   }
 }
